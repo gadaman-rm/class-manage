@@ -1,0 +1,16 @@
+{
+  "name": "TS_CLASS_MAKER",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "make": "ts-node ./Make.ts"
+  },
+  "devDependencies": {
+    "@types/ini": "^4.1.1",
+    "@types/node": "^22.1.0"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
+}

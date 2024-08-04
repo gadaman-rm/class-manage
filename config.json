@@ -1,0 +1,69 @@
+{
+    "general": {
+        "debug": false,
+        "writeLocally": false,
+        "readLocally": false
+    },
+    "class": {
+        "managers": [
+            {
+                "loc": "./",
+                "exclude_classes": [],
+                "add_classes": [
+                    {
+                        "loc": "./",
+                        "name": "deviceDialogManage"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceParamElement"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceTabManage"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceParamRequest"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceMenuManage"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceBackUp"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceSettingDialog"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceFileManager"
+                    },
+                    {
+                        "loc": "./",
+                        "name": "deviceMessageProcess"
+                    },
+                    {
+                        "loc": "../",
+                        "name": "deviceJsonManage"
+                    },
+                    {
+                        "loc": "../",
+                        "name": "deviceInputProcessManage"
+                    },
+                    {
+                        "loc": "../",
+                        "name": "fileManager"
+                    },
+                    {
+                        "loc": "../",
+                        "name": "webSocketClient"
+                    }
+                ]
+            }
+        ]
+    }
+}
