@@ -2,7 +2,7 @@
     "general": {
         "debug": false,
         "writeLocally": false,
-        "readLocally": false
+        "readLocally": true
     },
     "class": {
         "managers": [

@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "make": "ts-node ./Make.ts"
+    "make": "ts-node ./class-manage.ts"
+  },
+  "bin": {
+    "class-manage": "./out/class-manage.js"
   },
   "devDependencies": {
     "@types/ini": "^4.1.1",
