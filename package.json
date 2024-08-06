@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "test": "npm run build && cd C:/Users/gadaman/Desktop/auto_class_test && npx class-manage",
+    "build": "tsc --outDir ./out",
     "make": "ts-node ./class-manage.ts"
   },
   "bin": {

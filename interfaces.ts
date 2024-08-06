@@ -3,14 +3,11 @@ export interface addClassDefine {
   name: string;
 }
 
-export interface excludeClassDefine {
-  name: string;
-}
-
 export interface Manager {
   loc: string;
+  main: string;
   add_classes: addClassDefine[];
-  exclude_classes: excludeClassDefine[];
+  exclude_classes: string[];
 }
 
 export interface ClassConfig {

@@ -5,7 +5,7 @@ export class ConfigManage {
   constructor() {}
   readConfig(): AppConfig | null {
     try {
-      const configPath = "./config.json"; // Adjust the path as per your project structure
+      const configPath = "./class-manage-config.json";
       const configFile = fs.readFileSync(configPath, "utf-8");
       return JSON.parse(configFile) as AppConfig;
     } catch (error: any) {

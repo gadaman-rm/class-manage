@@ -8,12 +8,21 @@ export class Util {
   public static getFileNameAndExtension(fileName: string): { name: string; extension: string | null } {
     const lastDotIndex = fileName.lastIndexOf(".");
     if (lastDotIndex === -1 || lastDotIndex === 0 || lastDotIndex === fileName.length - 1) {
-      // No extension found or filename starts or ends with a dot (treated as no extension)
       return { name: fileName, extension: null };
     } else {
       const name = fileName.substring(0, lastDotIndex);
       const extension = fileName.substring(lastDotIndex + 1);
       return { name, extension };
     }
+  }
+
+  public static removeELementFromArray<tempelate>(inArr: tempelate[], removeIndex: number) {
+    return [...inArr.slice(0, removeIndex), ...inArr.slice(removeIndex + 1)];
+  }
+
+  public static createRegex(startClassImport: string, endClassImport: string): RegExp {
+    const escapedStart = startClassImport.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // Escape special characters
+    const escapedEnd = endClassImport.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // Escape special characters
+    return new RegExp(`(${escapedStart})([\\s\\S]*?)(${escapedEnd})`);
   }
 }

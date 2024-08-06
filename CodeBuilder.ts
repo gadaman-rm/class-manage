@@ -14,7 +14,7 @@ export class CodeBuilder {
       })
       .join(seperator);
   }
-  makeCode(classlist: addClassDefine[]) {
+  makeClassManageCode(classlist: addClassDefine[]) {
     let codeArr: string[] = [];
     codeArr.push(`import { EventCallback, EventEmitter } from "../EventEmitter";`);
     //Import Templates
@@ -25,7 +25,7 @@ export class CodeBuilder {
     const eventDefineTempelate = `| "{instead}Changed"`;
     const eventDefines = this.processTemplate(eventDefineTempelate, classlist, "\n");
     codeArr.push(eventDefines + ";");
-    codeArr.push("export class DeviceClassManage {");
+    codeArr.push("export class ClassManage {");
     codeArr.push("private eventEmitter: EventEmitter<ClassManageEvents>;");
     const privateaddClassDefineTempelate = "private {instead}: {^instead} | undefined;";
     const privateaddClassDefines = this.processTemplate(privateaddClassDefineTempelate, classlist, "\n");
@@ -52,6 +52,22 @@ export class CodeBuilder {
     codeArr.push(setGetClasseFunctions);
     codeArr.push("}"); //class end
 
+    return codeArr.join("\n");
+  }
+  makeInjectedDefieClass(classlist: addClassDefine[]) {
+    let codeArr: string[] = [];
+    codeArr.push("let classManage= new ClassManage();");
+    const defineTempelate = `let {instead}: {^instead};`;
+    const defineModules = this.processTemplate(defineTempelate, classlist, "\n");
+    codeArr.push(defineModules);
+    return codeArr.join("\n");
+  }
+
+  makeInjectedSetClass(classlist: addClassDefine[]) {
+    let codeArr: string[] = [];
+    const defineTempelate = `classManage.set{^instead}({instead});`;
+    const defineModules = this.processTemplate(defineTempelate, classlist, "\n");
+    codeArr.push(defineModules);
     return codeArr.join("\n");
   }
 }
