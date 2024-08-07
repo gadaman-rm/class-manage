@@ -4,11 +4,13 @@ import { CodeWriter } from "./CodeWriter";
 import { CodeReader } from "./CodeReader";
 import { Util } from "./Util";
 import { addClassDefine } from "./interfaces";
+import { CodeFormatter } from "./CodeFormatter";
 
 const configManage = new ConfigManage();
 const codeBuilder = new CodeBuilder();
 const codeWrite = new CodeWriter();
 const codeReader = new CodeReader();
+const codeFormatter = new CodeFormatter();
 
 async function makeClassManage() {
   const config = configManage.readConfig();
@@ -37,16 +39,19 @@ async function makeClassManage() {
         `${manager.loc}/${manager.main}`,
         codeBuilder.makeInjectedDefieClass(allClassList),
         "//$START_CLASS_DEFINE",
-        "//$END_CLASS_DEFINE"
+        "//$END_CLASS_DEFINE",
       );
 
       codeWrite.injectCode(
         `${manager.loc}/${manager.main}`,
         codeBuilder.makeInjectedSetClass(allClassList),
         "//$START_CLASS_SET",
-        "//$END_CLASS_SET"
+        "//$END_CLASS_SET",
       );
       codeWrite.writeCode(`${manager.loc}/ClassManage.ts`, codeBuilder.makeClassManageCode(allClassList));
+
+      codeFormatter.readFileAndFormatMain(`${manager.loc}/${manager.main}`);
+      codeFormatter.readFileAndFormatMain(`${manager.loc}/ClassManage.ts`);
     });
   } else {
     console.error("Failed to load configuration.");
@@ -54,5 +59,3 @@ async function makeClassManage() {
 }
 
 makeClassManage();
-
-//codeWrite.injectCode("./test_dir1/index.ts", "TEST", "//$START_CLASS_SET", "//$END_CLASS_SET");
